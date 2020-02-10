@@ -43,8 +43,8 @@
   position: relative;
   left: 50px;
   padding-top: 12px;
-  color: rgb(46, 97, 206);
   font-size: calc(10px + 2vmin);
+  width: 50%;
 }
 
 .ItemTo {

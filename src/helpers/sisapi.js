@@ -1,6 +1,6 @@
 import "whatwg-fetch";
 
-const serverURL = "http://localhost:8088";
+const serverURL = "http://chloehome2.ddns.net:45507";
 
 class SISApi {
 
