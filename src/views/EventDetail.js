@@ -2,23 +2,20 @@ import React, { Component } from "react";
 import messageIcon from '../SISmessageICON.png';
 import alertIcon from '../SISalertICON.png';
 import reminderIcon from '../SISreminderICON.png';
-import expand from '../expand.png';
-import collapse from '../collapse.png';
 
-export default class EventCell extends Component {
+export default class EventDetail extends Component {
 
   constructor(props) {
     super(props);
     this.state = { isExpanded: false };
   }
 
-handleToggle=(e) => {
-  e.stopPropagation()
+handleToggle() {
   this.setState({isExpanded: !this.state.isExpanded})
   }
 
 render() {
-   let item = this.props.item
+   let item = this.props.event
    let icon = <img src={messageIcon} alt='message icon' />
     // eslint-disable-next-line default-case
     switch(item.typeId) {
@@ -29,7 +26,7 @@ render() {
         icon = <img src={messageIcon} width='50px' height='50px' alt='message' />
         break;
       case 2:
-        icon = <img src={reminderIcon} width='50px' height='50px' alt='reminder' />
+        icon = <img src={reminderIcon} width='50px' height='50px' alt='reminder'/>
         break;
       case 3:
         icon = <img src={messageIcon} width='50px' height='50px' alt='message' />
@@ -52,22 +49,11 @@ render() {
         break;
         };
 
-  let open = <img src={expand} alt='+' />;
-
-  let close = <img src={collapse} alt='-' />;
-
-  let isExpanded = this.state.isExpanded;
-
-  let subjectClass = isExpanded ? 'ItemSubject' : 'ItemSubject ItemSubjectClosed';
-
-    return (<div className='EventCell' onClick={() => {
-      this.props.handleClick(item)}}>
+    return (<div className='EventCell' onClick={ () => this.props.handleClick()}>
     <div className='Icon'>{icon}</div>
     <div className='ItemName'>{name}</div>
-    <div className={subjectClass}>{item.content.subject}</div>
-    <div className='Button' onClick={this.handleToggle}>{isExpanded ? close : open }</div>
-    {isExpanded ? <div className='Hidden'>{item.content.body}</div> : <div />
-    }
+    <div className='ItemSubject'>{item.content.subject}</div>
+    <div className='Content'>{item.content.body}</div>
   </div>)
   }
 }

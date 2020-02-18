@@ -1,14 +1,14 @@
 import React from 'react';
 import logo from './footer-logo.png';
 import './App.css';
-import EventList from './views/EventList';
+import EventContainer from './views/EventContainer';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <EventList userId='mlutes'/>
+        <EventContainer />
       </header>
     </div>
   );
